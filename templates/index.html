@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Mission to Mars</title>
+  </head>
+  <body>
+      <!-- Use bootstrap Jumbotron for title display-->
+    <div class="jumbotron vertical-center">
+        <div class="container text-center"><h1 class="display-4">Mission to Mars</h1>
+        <br><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></div>
+    </div>
+
+    <!-- Display Mission to Mars News-->
+    <div class="container">
+      <p><h2>Mars News</h2></p>
+        <table class="table">
+          <tbody>
+          {% for i in range(0, redplatnetlen) %}
+            <tr>
+              <td><img src="{{listings['redplanet_info'][i]['Image']}}"/></td>
+              <td>
+                <h4>{{listings['redplanet_info'][i]['ArticleTitle']}}</h4>
+                <i>Published: {{listings['redplanet_info'][i]['ArticleDate']}}</i><br>
+                {{listings['redplanet_info'][i]['SummaryText']}}
+              </td>
+            </tr>            
+          {% endfor %}
+        </tbody>
+        </table>
+    </div>
+    <!-- Display featured image and information table -->
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h2>Featured Image of Mars</h2>
+          <p>
+            <img src="{{listings['featured_image']}}"/>
+          </p>
+        </div>
+        <div class="col">
+          <h5>Mars Facts</h5>
+          {{listings['earth_mars_facts'] | safe}}
+        </div>
+      </div>
+    </div>
+    <!-- Display Martian hemispheres -->
+    <div class="jumbotron d-flex flex-center">
+        {% for i in range(0, hemilen) %}
+          <div class="container">
+            <p><img src="{{listings['hemispheres'][i]['img_url']}}" width="450"/></p>
+            <p><h3>{{listings['hemispheres'][i]['title']}}</h3></p>
+          </div>
+        {% endfor %}
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
